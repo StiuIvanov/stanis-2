@@ -1,3 +1,4 @@
+
 logging:
   level:
     blog: WARN
@@ -5,17 +6,17 @@ logging:
     org.hibernate.SQL: warn
 spring:
   datasource:
-    driverClassName: org.postgresql.Driver
-    url: ${JDBC_DATABASE_URL:}
-    username: ${JDBC_DATABASE_USERNAME:}
-    password: ${JDBC_DATABASE_PASSWORD:}
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: '1234'
+    username: 'root'
+    url: jdbc:mysql://localhost:3306/datingapp?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
   jpa:
     hibernate:
       ddl-auto: create
     open-in-view: false
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: false
     defer-datasource-initialization: true
   mvc:
@@ -31,10 +32,9 @@ spring:
 
 cloudinary:
   api-key: 838182148315422
-  api-secret: ${CLOUDINARY_API_SECRET}
+  api-secret: 351352
   cloud-name: dit8nlten
 
 schedulers:
   cron: "0 0 12 1 * ?"
   cron1: "0 0 */12 ? * *"
-server.port: ${PORT:8080}
