@@ -55,7 +55,8 @@ html {
 
 
 body {
-    background-image: url(/images/background.jpg);
+    /*background-image: url(/images/background.jpg);*/
+    background-color: white;
     background-position: center;
     background-attachment: scroll;
     background-size: cover;
