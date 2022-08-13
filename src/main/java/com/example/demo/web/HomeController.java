@@ -58,6 +58,23 @@ public class HomeController {
         return modelAndView;
     }
 
+    @GetMapping("/gr")
+    public ModelAndView indexGr(@AuthenticationPrincipal UserDetails userDetails) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        if (userDetails != null) {
+            String picURL = parentService.findParentPicByUsername(userDetails.getUsername());
+            modelAndView.addObject("userPicture", picURL);
+            List<ChildDTO> childDTOList= parentService.getChildren(userDetails.getUsername());
+            modelAndView.addObject("children", childDTOList);
+            modelAndView.setViewName("home");
+            return modelAndView;
+        }
+
+        modelAndView.setViewName("indexGR");
+        return modelAndView;
+    }
+
     @Transactional
     @PostMapping("/home/add")
     public String addPicture(@AuthenticationPrincipal UserDetails userDetails,
